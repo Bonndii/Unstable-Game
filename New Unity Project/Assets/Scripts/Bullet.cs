@@ -24,14 +24,4 @@ public class Bullet : MonoBehaviour
         }
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(this.gameObject);
-        Debug.Log("Попал");
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(this.gameObject);
-        Debug.Log("Попал");
-    }
 }

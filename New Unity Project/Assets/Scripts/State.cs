@@ -21,7 +21,7 @@ public class State
     protected GameObject _bullet;
     protected State _nextState;
 
-    private float _attackDistance = 10.0f;
+    private float _attackDistance = 7.0f;
     public State(GameObject npc, Animator anim, Transform player, GameObject bullet)
     {
         _npc = npc;

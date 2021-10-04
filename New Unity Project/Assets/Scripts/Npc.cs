@@ -29,6 +29,7 @@ public class Npc : MonoBehaviour
             _bulletClone.GetComponent<Bullet>()._speed = _speed;
             _bulletClone.GetComponent<Bullet>()._timer = 5.0f;
             _bulletClone.GetComponent<Bullet>()._coolDown = 5.0f;
+            _bulletClone.AddComponent<BoxCollider>().isTrigger = true;
             _bulletClone = _bulletOriginal;
             _timer = _collDown;
         }
