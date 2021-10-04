@@ -13,13 +13,21 @@ namespace UI
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject destroyTunel;
         [SerializeField] private GameObject copyTunel;
+        [SerializeField] private Player player1;
+        [SerializeField] private GameObject lol;
         
         public void MainMenu()
         {
-            wall.transform.position = new Vector3(-0.2f, 2, 2.7f);
-            player.transform.position = new Vector3(-0.0108f, 0.0305f, 2.245f);
-            Instantiate(copyTunel, destroyTunel.transform.position, destroyTunel.transform.rotation);
+            player1.isPause = false;
+            player1.controller.enabled = true;
+            Time.timeScale = 1f;
+            wall.transform.localPosition = new Vector3(-0.2f, 2, 2.7f);
+            player.transform.localPosition = new Vector3(-0.0108f, 0.0305f, 2.245f);
+            Debug.Log(player.transform.position);
+            lol = Instantiate(copyTunel, destroyTunel.transform.position, destroyTunel.transform.rotation);
+            lol.transform.localScale = new Vector3(1, 1, 1);
             Destroy(destroyTunel);
+            destroyTunel = lol;
             on.SetActive(true);
             off.SetActive(false);
             off1.SetActive(false);

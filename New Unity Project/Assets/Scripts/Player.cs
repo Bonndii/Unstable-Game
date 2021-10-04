@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterController controller;
+    public CharacterController controller;
     [SerializeField] private float gravity;
     private Vector3 velocity;
     [SerializeField] private Transform groundCheck;
@@ -13,10 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private bool isGrounded;
     [SerializeField] private float jumpHeight;
-    [SerializeField] private GameObject lose;
-    [SerializeField] private GameObject win;
     [SerializeField] private GameObject pause;
-    [SerializeField] private bool isPause;
+    [SerializeField] private GameObject pauses;
+    public bool isPause;
 
     public float speed;
 
@@ -45,6 +43,7 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             isPause = false;
         }
+        Debug.Log(Time.timeScale);
     }
 
     void Move()
@@ -93,20 +92,22 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Lose");
         controller.enabled = false;
-        this.transform.position = Vector3.one + Vector3.right * 14;
+        this.transform.localPosition = new Vector3(-0.0108f, 0.0305f, 2.245f);
         this.transform.rotation = Quaternion.LookRotation(Vector3.right * 100);
         Time.timeScale = 0f;
-        lose.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
+        pauses.SetActive(true);
+        isPause = true;
     }
     private void Win()
     {
         Debug.Log("Win");
         controller.enabled = false;
-        this.transform.position = Vector3.one + Vector3.right * 14;
+        this.transform.localPosition = new Vector3(-0.0108f, 0.0305f, 2.245f);
         this.transform.rotation = Quaternion.LookRotation(Vector3.right * 100);
         Time.timeScale = 0f;
-        win.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
+        pauses.SetActive(true);
+        isPause = true;
     }
 }
