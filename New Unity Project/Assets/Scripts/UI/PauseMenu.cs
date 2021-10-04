@@ -6,37 +6,23 @@ namespace UI
 {
     public class PauseMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject pauseMenu;
-        [SerializeField] private KeyCode pauseButton = KeyCode.Escape;
-
-        private void Pause()
-        {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            Cursor.visible = true;
-        }
-
-        private void Resume()
-        {
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-            Cursor.visible = false;
-        }
+        [SerializeField] private GameObject on;
+        [SerializeField] private GameObject off;
+        [SerializeField] private GameObject off1;
+        [SerializeField] private GameObject wall;
+        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject destroyTunel;
+        [SerializeField] private GameObject copyTunel;
         
-        public void MainMenu(int sceneID)
+        public void MainMenu()
         {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(sceneID);
-        }
-
-        public void Update()
-        {
-            if (!Input.GetKeyDown(pauseButton)) return;
-
-            if (pauseMenu.activeSelf)
-                Resume();
-            else
-                Pause();
+            wall.transform.position = new Vector3(-0.2f, 2, 2.7f);
+            player.transform.position = new Vector3(-0.0108f, 0.0305f, 2.245f);
+            Instantiate(copyTunel, destroyTunel.transform.position, destroyTunel.transform.rotation);
+            Destroy(destroyTunel);
+            on.SetActive(true);
+            off.SetActive(false);
+            off1.SetActive(false);
         }
     }
 }

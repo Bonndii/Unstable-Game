@@ -5,9 +5,14 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        public void Play(int id)
+        [SerializeField] private GameObject on;
+        [SerializeField] private GameObject off;
+        [SerializeField] private int count;
+        public void Play()
         {
-            SceneManager.LoadScene(id);
+            on.SetActive(true);
+            off.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void Exit()

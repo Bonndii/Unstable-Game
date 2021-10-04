@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpHeight;
     [SerializeField] private GameObject lose;
     [SerializeField] private GameObject win;
+    [SerializeField] private GameObject pause;
+    [SerializeField] private bool isPause;
 
     public float speed;
 
@@ -28,6 +30,20 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
+        }
+        if(Input.GetKeyDown(KeyCode.Escape) && isPause == false)
+        {
+            pause.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.Confined;
+            isPause = true;
+        }    
+        else if(Input.GetKeyDown(KeyCode.Escape) && isPause == true)
+        {
+            pause.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            isPause = false;
         }
     }
 
