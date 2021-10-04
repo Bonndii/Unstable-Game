@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private bool isGrounded;
-    [SerializeField] private float jumpHeight = 3f;
+    [SerializeField] private float jumpHeight;
 
     public float speed;
 
