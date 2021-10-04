@@ -87,10 +87,9 @@ public class NpcAttack : State
     }
     public override void Update()
     {
-        Vector3 relativePos = _player.position - _npc.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        _npc.transform.rotation = rotation;
-        if (!CanAttackPlayer())
+        Vector3 relativePos = Vector3.RotateTowards(_npc.transform.forward, (_player.position - _npc.transform.position), 100.0f * Time.deltaTime ,0.0f);
+        _npc.transform.rotation = Quaternion.LookRotation(relativePos);
+        Debug.DrawRay(_npc.transform.position, relativePos, Color.red);
         {
             _nextState = new Idle(_npc, _anim, _player, _bullet);
             _stage = EVENT.EXIT;

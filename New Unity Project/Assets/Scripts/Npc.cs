@@ -10,6 +10,7 @@ public class Npc : MonoBehaviour
     [SerializeField] private float _timer;
     [SerializeField] private float _speed;
     [SerializeField] private float _collDown;
+    [SerializeField] private GameObject shootPoint;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class Npc : MonoBehaviour
         }
         else if (_currentState.CanAttackPlayer() && _timer < 0)
         {
-            _bulletClone = Instantiate(_bulletClone, this.transform.position, this.transform.rotation);
+            _bulletClone = Instantiate(_bulletClone, shootPoint.transform.position, this.transform.rotation);
             _bulletClone.AddComponent<Bullet>().player = _playerTransform;
             _bulletClone.GetComponent<Bullet>()._speed = _speed;
             _bulletClone.GetComponent<Bullet>()._timer = 5.0f;
